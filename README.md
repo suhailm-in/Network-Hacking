@@ -9,9 +9,15 @@
     - [Wireless Mode Changing](#wireless-mode-changing)
     - [Wireless Mode Changing ALFA](#wireless-mode-changing-alfa)
     - [Wireless Mode Changing Other Adapters](#wireless-mode-changing-other-adapters)
-
     
+
   - [Pre Connection Attacks](#pre-connection-attacks)
+    - [WIFI Bands](#wifi-bands)
+    - [Packet Sniffing](#packet-sniffing)
+    - 
+    
+
+
   - [Gaining Access](#gaining-access)
   - [Post Connection Attacks](#post-connection-attacks)
   
@@ -152,6 +158,41 @@ sudo aireplay-ng --test wlan0
 ---
 ## Pre Connection Attacks
 
+### WIFI Bands
+
+- besides the frequency range that can be used
+- determines the channel that can be used
+- clients need to support band used by a router to communicate with it
+- data can be sniffed from a certain band if the wireless adapter used supports that band
+
+***a - uses 5Ghz Frequency only <br>***
+***b,g - both use 2.4Ghz Frequency only <br>***
+***n - uses 5Ghz and 2.4Ghz <br>***
+***ac - uses Frequencies lower than 6Gzh***
+
+> see all 2.4Ghz Frequencies wifi bands
+```
+airodump-ng wlan0mon
+```
+> see all 5Ghz Frequencies wifi bands
+```
+airodump-ng --band a wlan0mon
+```
+> see both 2.4Ghz and 5Ghz Frequencies wifi bands
+```
+airodump-ng --band abg wlan0mon
+```
+
+
+
+### Packet Sniffing
+- **Using Airodump-ng**
+- ***airodump-ng*** is part of the ***aircrack-ng***
+- ***airodump-ng*** is a packet sinffer
+> get the AP's MAC Address and channel
+```
+sudo airdump-ng wlan0mon
+```
 
 
 ## Gaining Access
