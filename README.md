@@ -14,7 +14,8 @@
   - [Pre Connection Attacks](#pre-connection-attacks)
     - [WIFI Bands](#wifi-bands)
     - [Packet Sniffing](#packet-sniffing)
-    - 
+    - [Targeted Packet Sniffing](#targeted-packet-sniffing)
+    - [Deauthentication Attack](#deauthentication-attack)
     
 
 
