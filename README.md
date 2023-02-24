@@ -45,7 +45,7 @@ ifconfig
 
 ### Wireless Mode Changing
 Managed mode - Monitor mode
-- ! To enable Monitor mode for test packet injection
+- To enable Monitor mode for test packet injection
 
 > see all interface <br>
 ```
@@ -68,7 +68,7 @@ iwconfig
 
 ### Wireless Mode Changing ALFA
 ALFA - AWUS036NHA <br>
-- !To enable Monitor mode for test packet injection:
+- To enable Monitor mode for test packet injection:
 
 
 >see interface
@@ -100,7 +100,7 @@ Managed mode - Monitor mode<br>
 ifconfig wlan0 down
 airmon-ng check kill
 ifconfig wlan0 mode monitor
-ifconfig wlan0 up
+ifconfig wlan0mon up
 iwconfig
 ```
 > or
@@ -149,9 +149,11 @@ sudo modprobe 8188eu
 sudo ifconfig wlan0 down
 sudo airmon-ng check kill
 sudo iwconfig wlan0 mode monitor
-sudo ifconfig wlan0 up
-iwconfig                             
-sudo aireplay-ng --test wlan0
+sudo ifconfig wlan0mon up
+iwconfig
+```
+```
+sudo aireplay-ng --test wlan0mon
 ```
 
 
