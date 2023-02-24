@@ -7,6 +7,7 @@
   - [Network Basics](#network-basics)
     - [MAC Address Changing](#mac-address-changing)
     - [Wireless Mode Changing](#wireless-mode-changing)
+    - [Wireless Mode Changing ALFA](#wireless-mode-changing-alfa)
 
     
   - [Pre Connection Attacks](#pre-connection-attacks)
@@ -36,26 +37,54 @@ ifconfig
 - ether - mac address
 
 ### Wireless Mode Changing
-> Managed mode - Monitor mo
-- see all interface
-- desable interface
-- check for any conflicting process and kill them
-- monitore mode enable
-- enable interface
-- see wireless interface only
+Managed mode - Monitor mode
 
+> see all interface <br>
+> desable interface 
 ```
 ifconfig
 ifconfig wlan0 down
+```
+> check for any conflicting process and kill them. <br>
+> monitore mode enable. <br>
+> enable interface
+```
 airmon-ng check kill
 iwconfig wlan0 mode monitor
 ifconfig wlan0 up
+```
+> see wireless interface only
+```
 iwconfig
 ```
 
+### Wireless Mode Changing ALFA
+ALFA - AWUS036NHA <br>
+Managed mode - Monitor mode
+
+
+>see interface
+```
+ip addr
+iwconfig
+```
+>check for any conflicting process and kill them <br>
+>start monitor mode <br>
+>verify that monitor mode is used <br>
+```
+sudo airmon-ng check kill
+sudo airmon-ng start wlan0
+sudo airmon-ng
+```
+>you could also use iwconfig to check that interface is in monitor mode
+```
+iwconfig
+```
 
 ---
 ## Pre Connection Attacks
+
+
 
 ## Gaining Access
 
