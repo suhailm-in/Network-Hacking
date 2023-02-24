@@ -188,15 +188,29 @@ airodump-ng --band abg wlan0mon
 
 
 ### Packet Sniffing
+
 - **Using Airodump-ng**
 - ***airodump-ng*** is part of the ***aircrack-ng***
 - ***airodump-ng*** is a packet sinffer
+
 > get the AP's MAC Address and channel
 ```
 sudo airdump-ng wlan0mon
 ```
+>Targeted Packet Sniffing
+```
+airodump-ng --bssid B4:B0:24:74:21:7C --channel 1 --write testA wlan0mon
 
+```
+or
+```
+airodump-ng -w testA -c 1 --bssid B4:B0:24:74:21:7C wlan0mon 
 
+```
+bssid - target MAC Address <br>
+channel - channel number <br>
+write - file name to save <br>
+wlan0mon - interface name <br>
 
 
 
