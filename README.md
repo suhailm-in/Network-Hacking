@@ -20,6 +20,10 @@
 
 
   - [Gaining Access](#gaining-access)
+    - [WEP Cracking](#wep-cracking)
+    - 
+
+
   - [Post Connection Attacks](#post-connection-attacks)
   
   
@@ -238,6 +242,15 @@ wlan0mon - interface name <br>
 
 ---
 ## Gaining Access
+
+### WEP Cracking
+- Wired Equivalent Privacy (WEP)
+- Old encryption
+- Uses an algorithm called RC4
+- Still used in some networks
+- Can be cracked easily
+```
+```
 
 ---
 
