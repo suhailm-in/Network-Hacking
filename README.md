@@ -8,6 +8,7 @@
     - [MAC Address Changing](#mac-address-changing)
     - [Wireless Mode Changing](#wireless-mode-changing)
     - [Wireless Mode Changing ALFA](#wireless-mode-changing-alfa)
+    - [Wireless Mode Changing Other Adapters](#wireless-mode-changing-other-adapters)
 
     
   - [Pre Connection Attacks](#pre-connection-attacks)
@@ -38,17 +39,18 @@ ifconfig
 
 ### Wireless Mode Changing
 Managed mode - Monitor mode
+- ! To enable Monitor mode for test packet injection
 
 > see all interface <br>
-> desable interface 
 ```
 ifconfig
-ifconfig wlan0 down
 ```
-> check for any conflicting process and kill them. <br>
-> monitore mode enable. <br>
+> desable interface <br>
+> check for any conflicting process and kill them <br>
+> monitore mode enable <br>
 > enable interface
 ```
+ifconfig wlan0 down
 airmon-ng check kill
 iwconfig wlan0 mode monitor
 ifconfig wlan0 up
@@ -60,7 +62,7 @@ iwconfig
 
 ### Wireless Mode Changing ALFA
 ALFA - AWUS036NHA <br>
-Managed mode - Monitor mode
+- !To enable Monitor mode for test packet injection:
 
 
 >see interface
@@ -80,6 +82,72 @@ sudo airmon-ng
 ```
 iwconfig
 ```
+
+
+### Wireless Mode Changing Other Adapters
+TP-Link - TL-WN722N V2/V1 OR Other Ineterfaces <br>
+Managed mode - Monitor mode<br>
+
+
+
+```
+ifconfig wlan0 down
+airmon-ng check kill
+ifconfig wlan0 mode monitor
+ifconfig wlan0 up
+iwconfig
+```
+> or
+```
+ifconfig wlan0 down
+airmon-ng check kill
+airmon-ng start wlan0
+iwconfig
+```
+Driver Installing Processes <br>
+> Use these commands to get the adapter working on Kali for packet injection and monitoring:
+```
+sudo apt update
+sudo apt upgrade
+sudo apt install bc
+sudo apt-get install build-essential 
+sudo apt-get install libelf-dev 
+```
+> Try either of these commands to see which works:
+```
+sudo apt-get install linux-headers-`uname -r`
+```
+> or
+```
+sudo apt-get install linux-headers-5.10.0-kali6-amd64
+```
+> Driver Installing
+```
+sudo apt install dkms
+sudo rmmod r8188eu.ko
+git clone https://github.com/aircrack-ng/rtl8188eus
+cd rtl8188eus
+sudo -i
+echo "blacklist r8188eu" > "/etc/modprobe.d/realtek.conf"
+exit
+sudo reboot
+sudo apt update
+cd rtl8188eus
+sudo make
+sudo make install
+sudo modprobe 8188eu
+```
+  
+> To enable Monitor mode and test packet injection:
+```
+sudo ifconfig wlan0 down
+sudo airmon-ng check kill
+sudo iwconfig wlan0 mode monitor
+sudo ifconfig wlan0 up
+iwconfig                             
+sudo aireplay-ng --test wlan0
+```
+
 
 ---
 ## Pre Connection Attacks
