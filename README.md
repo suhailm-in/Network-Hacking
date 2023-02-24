@@ -160,6 +160,7 @@ sudo aireplay-ng --test wlan0mon
 ---
 ## Pre Connection Attacks
 
+
 ### WIFI Bands
 
 - besides the frequency range that can be used
@@ -186,7 +187,6 @@ airodump-ng --band abg wlan0mon
 ```
 
 
-
 ### Packet Sniffing
 - **Using Airodump-ng**
 - ***airodump-ng*** is part of the ***aircrack-ng***
@@ -197,7 +197,13 @@ sudo airdump-ng wlan0mon
 ```
 
 
+
+
+
+---
 ## Gaining Access
+
+---
 
 ## Post Connection Attacks
 
