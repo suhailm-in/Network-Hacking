@@ -16,6 +16,7 @@
     - [Packet Sniffing](#packet-sniffing)
     - [Targeted Packet Sniffing](#targeted-packet-sniffing)
     - [Deauthentication Attack](#deauthentication-attack)
+    - [CRUNCH WorldList](#crunch-worldlist)
     
 
 
@@ -27,11 +28,12 @@
 
 
   - [Post Connection Attacks](#post-connection-attacks)
+    - [WEP Cracking](#wep-cracking)
   
   
 
 ---
-## Network Basics
+## <h1>Network Basics
 
 ### MAC Address Changing 
 
@@ -50,6 +52,8 @@ ifconfig
 - hw - hardware
 - ether - mac address
 
+  <br><br>
+  
 ### Wireless Mode Changing
 Managed mode - Monitor mode
 - To enable Monitor mode for test packet injection
@@ -72,6 +76,8 @@ ifconfig wlan0 up
 ```
 iwconfig
 ```
+  
+ <br><br>
 
 ### Wireless Mode Changing ALFA
 ALFA - AWUS036NHA <br>
@@ -96,6 +102,7 @@ sudo airmon-ng
 iwconfig
 ```
 
+  <br><br>
 
 ### Wireless Mode Changing Other Adapters
 TP-Link - TL-WN722N V2/V1 OR Other Ineterfaces <br>
@@ -162,10 +169,11 @@ iwconfig
 ```
 sudo aireplay-ng --test wlan0mon
 ```
-
-
 ---
-## Pre Connection Attacks
+  
+  
+  <br><br><br><br>
+## <h1>Pre Connection Attacks
 
 
 ### WIFI Bands
@@ -193,6 +201,7 @@ airodump-ng --band a wlan0mon
 airodump-ng --band abg wlan0mon
 ```
 
+  <br><br>
 
 ### Packet Sniffing
 
@@ -205,6 +214,7 @@ airodump-ng --band abg wlan0mon
 sudo airdump-ng wlan0mon
 ```
 
+  <br><br>
 
 ### Targeted Packet Sniffing
 ```
@@ -219,8 +229,10 @@ airodump-ng -w testA -c 1 --bssid B4:B0:24:74:21:7C wlan0mon
 bssid - target MAC Address <br>
 channel - channel number <br>
 write - file name to save <br>
-wlan0mon - interface name <br>
+wlan0mon - interface name 
 
+  <br><br>
+  
 ### Deauthentication Attack
 
 - Disconnect any clint from any network
@@ -241,9 +253,32 @@ deauth - sending deauth packets number <br>
 -c - Target MAC Address <br>
 wlan0mon - interface name <br>
 
+  <br><br>
+
+### CRUNCH WorldList
+
+syntax:
+> crunch [min] [max] [characters] -t [pattern] -o [FileName]
+```
+crunch 6 8 abc123$ -o test.txt
+```
+```
+crunch 6 8 abc123$ -o test.txt -t a@@@@b
+```
+
+example worldlist:-
+aaaaab,
+aaabbb,
+aab$bb
 
 ---
-## Gaining Access
+
+
+<br><br><br><br>
+
+
+
+## <h1>Gaining Access
 
 ### WEP Cracking
 To crack WEP we need to:
@@ -270,6 +305,9 @@ it would take some time to capture enough IVs
 
 - Solution:
 force the AP to genarate new IVs (fake authentication attack)<br><br><br>
+  
+  <br><br>
+  
 
 ### Fake Authentication
 **Open terminal - 1**
@@ -322,10 +360,7 @@ Remove all colon symbol ":" in that key found [41:45:76:98]
 
 > Password : 41457698 
 
-<br><br><br>
-
-
-
+<br><br>
 
 ### WPA WPA2 Cracking WPS Enable Networks
 - This attaack only for work WPS enable networks
@@ -426,19 +461,27 @@ aircrack-ng wpa_handshake-01.cap -w test.txt
 KEY FOUND! [UAUERSXR] <br>
 "UAUERSXR" is the password of the our target network
 
-
-
-
-
-
-
-
-
-
-
 ---
 
+
+<br><br><br><br>
+
+
+
+
 ## Post Connection Attacks
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 
 ## Collections
