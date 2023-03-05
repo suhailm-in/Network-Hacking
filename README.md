@@ -482,25 +482,3 @@ KEY FOUND! [UAUERSXR] <br>
   
   
   
-
-
-## Collections
-
-- [AboutDFIR – The Definitive Compendium Project](https://aboutdfir.com) - Collection of forensic resources for learning and research. Offers lists of certifications, books, blogs, challenges and more
-- [DFIR.Training](https://www.dfir.training/) - Database of forensic resources focused on events, tools and more
-- :star: [ForensicArtifacts.com Artifact Repository](https://github.com/ForensicArtifacts/artifacts) - Machine-readable knowledge base of forensic artifacts
-
-## Tools
-
-- [Forensics tools on Wikipedia](https://en.wikipedia.org/wiki/List_of_digital_forensics_tools)
-- [Eric Zimmerman's Tools](https://ericzimmerman.github.io/#!index.md)
-
-### Distributions
-
-- [bitscout](https://github.com/vitaly-kamluk/bitscout) - LiveCD/LiveUSB for remote forensic acquisition and analysis
-- [Remnux](https://remnux.org/) - Distro for reverse-engineering and analyzing malicious software
-- [SANS Investigative Forensics Toolkit (sift)](https://github.com/teamdfir/sift) - Linux distribution for forensic analysis
-- [Tsurugi Linux](https://tsurugi-linux.org/) - Linux distribution for forensic analysis
-- [WinFE](https://www.winfe.net/home) - Windows Forensics enviroment
-
-### Frameworks
